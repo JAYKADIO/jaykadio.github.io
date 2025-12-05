@@ -333,7 +333,30 @@ section.show{opacity:1;transform:translateY(0)}
   50%{transform:scale(1.05)}
   100%{transform:scale(.98)}
 }
-.loader-sub{color:var(--muted)}
+.loader-sub{
+  color:var(--muted);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  font-size:13px;
+  margin-top:2px;
+  animation:textGlow 2.3s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow{
+  0%{
+    opacity:0.55;
+    text-shadow:0 0 0 rgba(124,92,255,0);
+  }
+  50%{
+    opacity:0.98;
+    text-shadow:0 0 18px rgba(124,92,255,0.95);
+  }
+  100%{
+    opacity:0.8;
+    text-shadow:0 0 8px rgba(58,214,255,0.7);
+  }
+}
+
 
 /* ---------------- light mode (class based) ---------------- */
 .light{
@@ -387,26 +410,62 @@ section.show{opacity:1;transform:translateY(0)}
 }
 
 @media(max-width:640px){
+  /* slimmer header on phone */
   header{
-    padding:10px 16px;
-    flex-direction:column;
-    align-items:flex-start;
+    padding:8px 12px;
+    gap:8px;
   }
+
+  .brand .mark{
+    width:44px;
+    height:44px;
+    border-radius:10px;
+    font-size:22px;
+  }
+  .title h1{font-size:14px;}
+  .title p{font-size:11px;}
+
+  /* nav scrolls sideways if too many links */
+  nav{
+    flex:1;
+    justify-content:flex-end;
+    gap:6px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  nav::-webkit-scrollbar{display:none;}
+
+  .nav-link,
+  .btn{
+    padding:6px 10px;
+    font-size:11px;
+    white-space:nowrap;
+  }
+
   .wrap{
-    padding:28px 16px;
+    padding:24px 14px;
   }
+
   .grid{
     grid-template-columns:1fr;
   }
   .contact-grid{
     grid-template-columns:1fr;
   }
+
+  /* hero smaller on first screen */
   #home{
-    padding-top:24px;
-    padding-bottom:24px;
+    padding-top:18px;
+    padding-bottom:18px;
   }
-  .hero h2{font-size:26px}
+  .hero h2{font-size:22px;}
+
+  /* posters a bit more “landscape” on phone */
+  .thumb img{
+    height:220px;
+  }
 }
+
 
 /* small page-fade class used by nav JS */
 .page-fade{
@@ -421,7 +480,8 @@ section.show{opacity:1;transform:translateY(0)}
 <div id="loader">
   <div class="loader-box">
     <div class="spinner">J</div>
-    <div class="loader-sub">Jay — Posters, Branding & LUMINA</div>
+   <div class="loader-sub">Portfolio of Jay</div>
+
   </div>
 </div>
 
@@ -483,9 +543,18 @@ section.show{opacity:1;transform:translateY(0)}
 
   <!-- ABOUT -->
   <section id="about" class="wrap">
-    <div class="section-title">About Jay</div>
-    <p class="lead muted">I’m Jay, a 22-year-old creative communication design student at Bangkok University. My work focuses on posters, branding and typographic experiments — design that communicates with clarity and emotion.</p>
-  </section>
+  <div class="section-title">About Me</div>
+  <p class="lead muted">
+    Hi, I’m Lin La Won, but most people call me Jay. I’m a 22-year-old Creative Communication Design student at Bangkok University International with a passion for creating manipulation-style posters and visual storytelling.
+  </p>
+  <p class="lead muted">
+    I’m a calm and independent person who enjoys peaceful and quiet environments—they help me focus and bring my ideas to life. I don’t hang out much, but I enjoy spending time alone or with a close friend when I need a break.
+  </p>
+  <p class="lead muted">
+    In my free time, I like playing badminton and football to stay active and refresh my mind. I’m always curious, always learning, and always trying to express emotions and ideas through my designs.
+  </p>
+</section>
+
 
   <!-- PERSONAL POSTERS -->
   <section id="persona" class="wrap">
