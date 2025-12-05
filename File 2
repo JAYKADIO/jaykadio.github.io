@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Jay — Resume</title>
+<style>
+  body{font-family:Inter,system-ui,Arial;background:#071018;color:#e6eef8;margin:0;padding:36px}
+  .wrap{max-width:900px;margin:auto}
+  h1{margin-bottom:8px}
+  p{color:#9db0c6}
+  .download{display:inline-block;margin-top:18px;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);color:#e6eef8;text-decoration:none}
+  .meta{margin-top:18px;color:#9db0c6}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Jay — Resume</h1>
+    <p class="meta">Creative Communication Design student — Bangkok University (22). 6 months full-time at an esports organization (Myanmar). Freelance poster & branding projects. Tools: Photoshop · Illustrator · Figma.</p>
+
+    <a class="download" href="/assets/resume.pdf" target="_blank">Download PDF Resume</a>
+
+    <h2 style="margin-top:28px">Experience</h2>
+    <ul style="color:#cfe6ff">
+      <li>Graphic Designer (Esports Org) — 6 months — visual assets, event posters, team branding</li>
+      <li>Freelance Designer — poster & branding projects for clients</li>
+    </ul>
+
+    <h2 style="margin-top:18px">Skills</h2>
+    <p>Photoshop, Illustrator, Figma (layout), basic Maya, typography, brand identity, poster design</p>
+
+    <h2 style="margin-top:18px">Contact</h2>
+    <p class="meta">lynnlawunn6@gmail.com • Instagram: @j  aykadio_53 • Viber: +959950641676</p>
+  </div>
+</body>
+</html>
