@@ -123,11 +123,62 @@ section.show{opacity:1;transform:translateY(0)}
 .lead{color:var(--muted);margin-bottom:14px}
 
 /* ---------------- grids & cards ---------------- */
+/* ---------------- grids & cards ---------------- */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
   gap:var(--gap);
 }
+
+/* main poster cards */
+.thumb{
+  background:var(--panel-dark);
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.05);
+  cursor:pointer;
+  position:relative;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s;
+}
+
+/* image behaves like in your screenshot: fixed height, cover */
+.thumb img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  display:block;
+  transition:transform .45s var(--ease), filter .32s;
+}
+
+.thumb:hover{
+  transform:translateY(-10px);
+  box-shadow:0 24px 50px rgba(2,8,18,0.75);
+  border-color:rgba(124,92,255,0.6);
+}
+
+.thumb:hover img{
+  transform:scale(1.06);
+  filter:brightness(1.06);
+}
+
+.thumb .meta{
+  position:absolute;
+  left:12px;
+  bottom:12px;
+  background:linear-gradient(180deg, rgba(2,6,11,0.7), rgba(2,6,11,0.4));
+  padding:10px 12px;
+  border-radius:10px;
+  backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,0.08);
+}
+.meta h4{margin:0;font-size:14px}
+.meta p{margin:4px 0 0;color:var(--muted);font-size:12px}
+
+/* “small” variant for things like LUMINA thumbnails only */
+.thumb.small img{
+  height:180px;
+}
+
 
 /* Thumb cards: responsive ratio instead of fixed px height */
 .thumb{
@@ -492,56 +543,51 @@ section.show{opacity:1;transform:translateY(0)}
     </div>
   </section>
 
-     <!-- Heineken Chill -->
-  <div class="grid" id="adsGrid">
-  ...here...
-</div>
-
-    <div class="thumb small"
-         data-title="Heineken Chill"
-         data-desc="A crisp, refreshing beer visual that turns a classic bottle into a bold lifestyle moment."
+      <!-- Heineken — Chill the Moment -->
+    <div class="thumb"
+         data-title="Heineken — Chill the Moment"
+         data-desc="A refreshing visual built around crisp lighting and energetic contrast, transforming a familiar beverage into a bold lifestyle statement."
          data-src="/images/heineken for portfolio.jpg">
-      <img src="/images/heineken for portfolio.jpg" alt="Heineken Chill poster">
+      <img src="/images/heineken for portfolio.jpg" alt="Heineken — Chill the Moment">
       <div class="meta">
-        <h4>Heineken Chill</h4>
-        <p>Cool, bright, and refreshing.</p>
+        <h4>Heineken — Chill the Moment</h4>
+        <p>Bright, cool, and made to stand out.</p>
       </div>
     </div>
 
-    <!-- Dreamio — Lynn La Wunn -->
-    <div class="thumb small"
-         data-title="Dreamio — Lynn La Wunn"
-         data-desc="A dreamy character campaign built around soft light and cinematic mood, centered on Lynn La Wunn."
+    <!-- Dreamio — Lynn La Wunn Campaign -->
+    <div class="thumb"
+         data-title="Dreamio — Lynn La Wunn Campaign"
+         data-desc="A dreamy, cinematic character portrait blending soft surreal tones with expressive composition—an identity-based design focused on mood and personality."
          data-src="/images/Lynn La Wunn (Dreamio).jpg">
-      <img src="/images/Lynn La Wunn (Dreamio).jpg" alt="Dreamio — Lynn La Wunn poster">
+      <img src="/images/Lynn La Wunn (Dreamio).jpg" alt="Dreamio — Lynn La Wunn Campaign">
       <div class="meta">
-        <h4>Dreamio — Lynn La Wunn</h4>
-        <p>Cinematic and dreamy identity.</p>
+        <h4>Dreamio — Lynn La Wunn Campaign</h4>
+        <p>Where imagination meets story.</p>
       </div>
     </div>
 
-   <!-- Staedtler Precision -->
-<div class="thumb small"
-     data-title="Staedtler Precision"
-     data-desc="A clean commercial layout that highlights Staedtler tools as the choice for precise, confident creation."
-     data-src="/images/Steadtler 2.jpg">
-  <img src="/images/Steadtler 2.jpg" alt="Staedtler Precision poster">
-  <div class="meta">
-    <h4>Staedtler Precision</h4>
-    <p>Tools for sharp ideas.</p>
-  </div>
-</div>
-
-
-    <!-- Secret Sweet -->
-    <div class="thumb small"
-         data-title="Secret Sweet"
-         data-desc="A warm dessert branding concept using soft color and composition to evoke comfort and indulgence."
-         data-src="/images/The secret sweet final.jpg">
-      <img src="/images/The secret sweet final.jpg" alt="Secret Sweet dessert poster">
+    <!-- Staedtler Precision — Creative Tools Poster -->
+    <div class="thumb"
+         data-title="Staedtler Precision — Creative Tools Poster"
+         data-desc="A clean, high-impact commercial visual emphasizing craftsmanship, clarity, and the confidence behind professional-grade tools."
+         data-src="/images/Steadtler 2.jpg">
+      <img src="/images/Steadtler 2.jpg" alt="Staedtler Precision — Creative Tools Poster">
       <div class="meta">
-        <h4>Secret Sweet</h4>
-        <p>Soft, cozy, and indulgent.</p>
+        <h4>Staedtler Precision — Creative Tools Poster</h4>
+        <p>Design crafted with precision.</p>
+      </div>
+    </div>
+
+    <!-- Secret Sweet — Dessert Branding Concept -->
+    <div class="thumb"
+         data-title="Secret Sweet — Dessert Branding Concept"
+         data-desc="A warm, inviting dessert advertisement blending soft color palettes and elegant layout to evoke comfort, sweetness, and indulgence."
+         data-src="/images/The secret sweet final.jpg">
+      <img src="/images/The secret sweet final.jpg" alt="Secret Sweet — Dessert Branding Concept">
+      <div class="meta">
+        <h4>Secret Sweet — Dessert Branding Concept</h4>
+        <p>A taste you can feel.</p>
       </div>
     </div>
 
