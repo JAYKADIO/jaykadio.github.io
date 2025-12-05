@@ -1,332 +1,419 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Jay — Creative Portfolio</title>
-<meta name="description" content="Jay — Posters, Branding & Typographic experiments. I fix what your eyes complain about.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAY — Portfolio</title>
+
 <style>
-  :root{
-    --bg:#05060b; --panel:#0e1317; --muted:#9db0c6; --accent:#7c5cff;
-    --glass:rgba(255,255,255,0.03); --radius:14px; --maxw:1100px;
-    --gap:20px; --easing:cubic-bezier(.22,.9,.28,1);
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,Arial;color:#e6eef8;background:
-    radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.08), transparent 8%),
-    linear-gradient(180deg, #05060b 0%, #071523 100%); -webkit-font-smoothing:antialiased}
-  a{color:inherit}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:34px}
-  header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .brand{display:flex;align-items:center;gap:12px}
-  .mark{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#3ad6ff);display:flex;align-items:center;justify-content:center;color:#081018;font-weight:800;font-size:20px;box-shadow:0 6px 30px rgba(124,92,255,.14)}
-  .title{line-height:1}
-  .title h1{font-size:18px;margin:0}
-  .title p{margin:0;color:var(--muted);font-size:13px}
-  nav{display:flex;gap:12px}
-  nav a{padding:8px 12px;border-radius:10px;border:1px solid transparent;color:var(--muted);text-decoration:none;transition:all .25s var(--easing)}
-  nav a:hover{color:#fff;border-color:rgba(255,255,255,0.04);background:linear-gradient(90deg, rgba(124,92,255,0.04), rgba(58,214,255,0.02))}
-  /* Hero */
-  .hero{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:center;padding:48px 0}
-  .hero-left{padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:var(--radius);border:1px solid rgba(255,255,255,0.03)}
-  .hero-left h2{font-size:34px;margin:0 0 10px}
-  .hero-left p{color:var(--muted);line-height:1.6}
-  .slogan{display:inline-block;margin-top:14px;padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(124,92,255,0.12), rgba(58,214,255,0.06));border:1px solid rgba(124,92,255,0.08);font-weight:700}
-  .hero-right{display:flex;flex-direction:column;gap:12px}
-  .card{background:var(--panel);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-  .card h4{margin:0 0 8px}
-  .muted{color:var(--muted)}
-  /* Sections */
-  section{opacity:0;transform:translateY(32px);transition:opacity .8s var(--easing), transform .8s var(--easing);margin-top:26px}
-  section.show{opacity:1;transform:translateY(0)}
-  .section-title{font-size:20px;margin:0 0 12px;font-weight:700}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
-  .thumb{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .35s var(--easing), box-shadow .35s}
-  .thumb img{width:100%;height:240px;object-fit:cover;display:block}
-  .thumb:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,8,18,0.7)}
-  /* Responsive smaller images */
-  .thumb.small img{height:160px}
-  /* Branding area */
-  .branding-layout{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
-  .mock{background:var(--glass);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
-  /* Modal */
-  .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(0deg,rgba(2,6,11,0.8),rgba(2,6,11,0.8));z-index:999;opacity:0;pointer-events:none;transition:opacity .25s}
-  .modal.show{opacity:1;pointer-events:auto}
-  .viewer{max-width:1100px;max-height:88vh;background:#071018;padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
-  .viewer img{width:100%;height:auto;border-radius:8px}
-  .viewer .controls{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
-  .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
-  /* Footer */
-  footer{margin:34px 0;color:var(--muted);text-align:center;font-size:14px}
-  /* Loader */
-  #loader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, #05060b 0%, rgba(2,6,11,0.6) 60%);z-index:2000;transition:opacity .6s}
-  #loader.hide{opacity:0;pointer-events:none}
-  .loader-box{display:flex;flex-direction:column;align-items:center;gap:12px}
-  .spinner{width:96px;height:96px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:36px;background:linear-gradient(135deg,var(--accent),#3ad6ff);box-shadow:0 20px 60px rgba(124,92,255,0.18);animation:loaderPop 1.2s infinite both}
-  @keyframes loaderPop{0%{transform:scale(.9)}50%{transform:scale(1.05)}100%{transform:scale(.95)}}
-  .loader-sub{color:var(--muted);font-size:13px}
-  /* fadeout on navigation */
-  .page-fade{transition:opacity .6s var(--easing)} .page-fade.hide{opacity:0}
-  /* responsive */
-  @media(max-width:980px){.hero{grid-template-columns:1fr;padding:28px 0}.grid{grid-template-columns:repeat(2,1fr)}.branding-layout{grid-template-columns:1fr} .thumb img{height:200px}}
-  @media(max-width:600px){.grid{grid-template-columns:1fr}.hero-left h2{font-size:26px}.mark{width:48px;height:48px}}
+/* ------------------------------
+   ROOT + THEME
+--------------------------------*/
+:root {
+  --bg:#0b0f14;
+  --card:#10141b;
+  --accent:#5fc5ff;
+  --muted:#9aa3b8;
+  --fs:16px;
+  --radius:16px;
+  --maxw:1180px;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter, sans-serif;
+}
+
+/* ------------------------------
+   BODY + BACKGROUND
+--------------------------------*/
+body {
+  background:linear-gradient(180deg,#04080f 0%,#0b0f14 100%);
+  color:#e4f2ff;
+  font-size:var(--fs);
+  opacity:0;
+  animation:fadeIn .9s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+/* Page Fade-Out on link click */
+.fade-out {
+  animation:fadeOut .5s ease forwards !important;
+}
+
+@keyframes fadeOut {
+  to {opacity:0; transform:scale(.98);}
+}
+
+/* ------------------------------
+   LOADING SCREEN
+--------------------------------*/
+#loader {
+  position:fixed;
+  inset:0;
+  background:#0b0f14;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  animation:loaderHide 1.5s ease forwards;
+  animation-delay:1.1s;
+}
+
+@keyframes loaderHide {
+  to {opacity:0; visibility:hidden;}
+}
+
+.loader-text {
+  color:#5fc5ff;
+  font-size:28px;
+  letter-spacing:2px;
+  animation:glow 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {opacity:.3;}
+  to {opacity:1;}
+}
+
+/* ------------------------------
+   LAYOUT
+--------------------------------*/
+.wrap {
+  max-width:var(--maxw);
+  padding:50px 20px;
+  margin:auto;
+}
+
+section {
+  padding: 60px 0;
+}
+
+/* Fade-in content */
+.fade-section {
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .8s var(--ease), transform .8s var(--ease);
+}
+.fade-section.show {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ------------------------------
+   HEADER + NAV
+--------------------------------*/
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 25px;
+  background:rgba(255,255,255,0.02);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  position:sticky;
+  top:0;
+  backdrop-filter:blur(10px);
+  z-index:20;
+}
+
+.logo {
+  font-size:22px;
+  font-weight:700;
+  color:#5fc5ff;
+}
+
+nav a {
+  margin-left:18px;
+  color:#9aa3b8;
+  text-decoration:none;
+  transition:.28s;
+}
+nav a:hover {
+  color:#5fc5ff;
+}
+
+/* ------------------------------
+   HERO SECTION
+--------------------------------*/
+.hero h1 {
+  font-size:44px;
+  font-weight:700;
+}
+
+.hero p {
+  margin-top:16px;
+  font-size:18px;
+  color:var(--muted);
+}
+
+/* ------------------------------
+   SECTION TITLES
+--------------------------------*/
+.section-title {
+  font-size:32px;
+  font-weight:700;
+  margin-bottom:25px;
+}
+
+.lead {
+  color:var(--muted);
+  margin-bottom:30px;
+}
+
+/* ------------------------------
+   GRID FOR POSTERS / ADS / ETC
+--------------------------------*/
+.grid {
+  display:grid;
+  gap:20px;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+}
+
+.card {
+  background:var(--card);
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.06);
+  transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+  cursor:pointer;
+}
+
+.card:hover {
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.45);
+}
+
+.card img {
+  width:100%;
+  display:block;
+}
+
+/* ------------------------------
+   CONTACT
+--------------------------------*/
+.contact-grid {
+  margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.contact-item {
+  background:rgba(255,255,255,0.03);
+  padding:20px;
+  border-radius:var(--radius);
+  border:1px solid rgba(255,255,255,0.05);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+
+.contact-item:hover {
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.45);
+}
+
+.contact-item h3 {
+  margin-bottom:6px;
+  font-size:16px;
+}
+
+.contact-item a, .contact-item p {
+  color:var(--muted);
+  font-size:15px;
+  word-break:break-all;
+}
+
+/* ------------------------------
+   MODAL IMAGE VIEW
+--------------------------------*/
+#modal {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+#modal img {
+  max-width:90%;
+  max-height:90%;
+  border-radius:var(--radius);
+}
+#modal.active {
+  display:flex;
+}
 </style>
 </head>
-<body class="page-fade">
 
-<!-- Loader -->
+<body>
+
+<!-- LOADING SCREEN -->
 <div id="loader">
-  <div class="loader-box">
-    <div class="spinner">J</div>
-    <div class="loader-sub">Jay — crafting posters & brands</div>
-  </div>
+  <div class="loader-text">JAY</div>
 </div>
 
-<!-- Page content -->
-<div id="site" style="visibility:hidden">
+<header>
+  <div class="logo">JAY</div>
+  <nav>
+    <a href="#posters">Posters</a>
+    <a href="#ads">Ads</a>
+    <a href="#esports">Esports</a>
+    <a href="#type">Typography</a>
+    <a href="#branding">Branding</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
+<!-- HERO -->
+<section class="hero wrap fade-section">
+  <h1>Hello, I'm Jay</h1>
+  <p>I design visually strong posters, branding, esports visuals, typography, and creative layouts.  
+     “I fix what your eyes complain about.”</p>
+</section>
+
+<!-- PERSONAL POSTERS -->
+<section id="posters" class="fade-section">
   <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="mark">J</div>
-        <div class="title"><h1>Jay — Visual Crafts</h1><p>Posters • Branding • Typography</p></div>
-      </div>
-
-      <nav>
-        <a href="#home" data-target="home">Home</a>
-        <a href="#personal" data-target="personal">Personal Posters</a>
-        <a href="#ads" data-target="ads">Creative Ads</a>
-        <a href="#esports" data-target="esports">Esport Works</a>
-        <a href="#illustration" data-target="illustration">Illustrations</a>
-        <a href="#typography" data-target="typography">Typographic Series</a>
-        <a href="#branding" data-target="branding">Branding Set</a>
-        <a href="#contact" data-target="contact">Contact</a>
-      </nav>
-    </header>
-
-    <!-- Hero / Intro -->
-    <div id="home" class="hero" role="region" aria-label="Intro">
-      <div class="hero-left card">
-        <h2>Design that fixes what your eyes complain about.</h2>
-        <p>I'm Jay — a Bangkok University creative communication design student. I design bold, readable posters, full brand systems and typographic experiments for esports and creative projects.</p>
-        <div class="slogan">I fix what your eyes complain about.</div>
-      </div>
-
-      <div class="hero-right">
-        <div class="card">
-          <h4>Quick facts</h4>
-          <p class="muted">• 6 months full-time at an esports org (Myanmar)<br>• Freelance poster & branding work<br>• Tools: Photoshop · Illustrator · Figma</p>
-        </div>
-        <div class="card">
-          <h4>Contact</h4>
-          <p class="muted">Email: <a href="mailto:your-email@example.com">your-email@example.com</a><br>IG / TikTok: <span class="muted">@yourhandle</span></p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Personal posters -->
-    <section id="personal">
-      <div class="section-title">Personal Projects — The Quiet Loud</div>
-      <p class="muted">A curated set of personal posters exploring light, mood and typography.</p>
-      <div class="grid" style="margin-top:14px">
-        <!-- placeholders -->
-        <div class="thumb" data-src="/images/personal1.jpg"><img src="/images/personal1.jpg" alt="Personal 1"></div>
-        <div class="thumb" data-src="/images/personal2.jpg"><img src="/images/personal2.jpg" alt="Personal 2"></div>
-        <div class="thumb" data-src="/images/personal3.jpg"><img src="/images/personal3.jpg" alt="Personal 3"></div>
-        <div class="thumb" data-src="/images/personal4.jpg"><img src="/images/personal4.jpg" alt="Personal 4"></div>
-        <div class="thumb" data-src="/images/personal5.jpg"><img src="/images/personal5.jpg" alt="Personal 5"></div>
-        <div class="thumb" data-src="/images/personal6.jpg"><img src="/images/personal6.jpg" alt="Personal 6"></div>
-      </div>
-    </section>
-
-    <!-- Advertisement posters -->
-    <section id="ads">
-      <div class="section-title">Ad Creations — Speak & Sell</div>
-      <p class="muted">Four advertisement posters made for campaigns and promos.</p>
-      <div class="grid" style="margin-top:14px">
-        <div class="thumb" data-src="/images/ads1.jpg"><img src="/images/ads1.jpg" alt="Ad 1"></div>
-        <div class="thumb" data-src="/images/ads2.jpg"><img src="/images/ads2.jpg" alt="Ad 2"></div>
-        <div class="thumb" data-src="/images/ads3.jpg"><img src="/images/ads3.jpg" alt="Ad 3"></div>
-        <div class="thumb" data-src="/images/ads4.jpg"><img src="/images/ads4.jpg" alt="Ad 4"></div>
-      </div>
-    </section>
-
-    <!-- Esports posters -->
-    <section id="esports">
-      <div class="section-title">Esport Series — Night Arena</div>
-      <p class="muted">Posters created for esports events, team promos and match nights.</p>
-      <div class="grid" style="margin-top:14px">
-        <div class="thumb" data-src="/images/esport1.jpg"><img src="/images/esport1.jpg" alt="Esport 1"></div>
-        <div class="thumb" data-src="/images/esport2.jpg"><img src="/images/esport2.jpg" alt="Esport 2"></div>
-        <div class="thumb" data-src="/images/esport3.jpg"><img src="/images/esport3.jpg" alt="Esport 3"></div>
-        <div class="thumb" data-src="/images/esport4.jpg"><img src="/images/esport4.jpg" alt="Esport 4"></div>
-        <div class="thumb" data-src="/images/esport5.jpg"><img src="/images/esport5.jpg" alt="Esport 5"></div>
-        <div class="thumb" data-src="/images/esport6.jpg"><img src="/images/esport6.jpg" alt="Esport 6"></div>
-        <div class="thumb" data-src="/images/esport7.jpg"><img src="/images/esport7.jpg" alt="Esport 7"></div>
-        <div class="thumb" data-src="/images/esport8.jpg"><img src="/images/esport8.jpg" alt="Esport 8"></div>
-      </div>
-    </section>
-
-    <!-- Illustrations -->
-    <section id="illustration">
-      <div class="section-title">Illustration — Lines & Colour</div>
-      <p class="muted">Two illustrative pieces exploring character and mood.</p>
-      <div class="grid" style="margin-top:14px">
-        <div class="thumb small" data-src="/images/illu1.jpg"><img src="/images/illu1.jpg" alt="Illustration 1"></div>
-        <div class="thumb small" data-src="/images/illu2.jpg"><img src="/images/illu2.jpg" alt="Illustration 2"></div>
-      </div>
-    </section>
-
-    <!-- Typography -->
-    <section id="typography">
-      <div class="section-title">Typeface Experiments — LUMINA Studies</div>
-      <p class="muted">Own typography set applied across multiple poster layouts (4 posters, 5 layouts).</p>
-      <div class="grid" style="margin-top:14px">
-        <div class="thumb" data-src="/images/typo1.jpg"><img src="/images/typo1.jpg" alt="Typo 1"></div>
-        <div class="thumb" data-src="/images/typo2.jpg"><img src="/images/typo2.jpg" alt="Typo 2"></div>
-        <div class="thumb" data-src="/images/typo3.jpg"><img src="/images/typo3.jpg" alt="Typo 3"></div>
-        <div class="thumb" data-src="/images/typo4.jpg"><img src="/images/typo4.jpg" alt="Typo 4"></div>
-        <div class="thumb small" data-src="/images/typo-layout5.jpg"><img src="/images/typo-layout5.jpg" alt="Typo layout 5"></div>
-      </div>
-    </section>
-
-    <!-- Branding -->
-    <section id="branding">
-      <div class="section-title">Branding — Blue Void (Full system)</div>
-      <p class="muted">Complete branding set — 20 pages of guidelines, logo system and application mockups.</p>
-      <div class="branding-layout" style="margin-top:14px">
-        <div class="card">
-          <img src="/images/branding-cover.jpg" alt="Brand Cover" style="border-radius:10px;margin-bottom:12px">
-          <p class="muted">This project includes: Logo marks, color system, type palette, usage examples and a 20-page PDF guideline.</p>
-          <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
-            <div class="mock"><img src="/images/brand-logo.jpg" alt="logo" style="width:140px;height:90px;object-fit:contain;border-radius:8px"></div>
-            <div class="mock"><img src="/images/brand-palette.jpg" alt="palette" style="width:140px;height:90px;object-fit:cover;border-radius:8px"></div>
-            <div class="mock"><img src="/images/brand-type.jpg" alt="type" style="width:140px;height:90px;object-fit:cover;border-radius:8px"></div>
-          </div>
-          <div style="margin-top:12px">
-            <a class="btn" href="/assets/brand-guideline.pdf" target="_blank">Download 20-page guideline (PDF)</a>
-          </div>
-        </div>
-
-        <div>
-          <div class="mock"><img src="/images/mockup1.jpg" alt="mock 1" style="width:100%;height:160px;object-fit:cover;border-radius:8px"></div>
-          <div style="height:12px"></div>
-          <div class="mock"><img src="/images/mockup2.jpg" alt="mock 2" style="width:100%;height:160px;object-fit:cover;border-radius:8px"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <div class="section-title">Let's work together</div>
-      <div class="card" style="margin-top:12px;padding:20px">
-        <p class="muted">Email: <a href="mailto:your-email@example.com">your-email@example.com</a> • IG: <a href="https://instagram.com/yourhandle" target="_blank">@yourhandle</a></p>
-        <p class="muted" style="margin-top:8px">Available for freelance, commissions and brand collaborations.</p>
-      </div>
-    </section>
-
-    <footer>© Jay — Designed & coded by Jay • I fix what your eyes complain about.</footer>
-  </div>
-</div>
-
-<!-- Modal viewer -->
-<div id="modal" class="modal" aria-hidden="true">
-  <div class="viewer">
-    <img id="modalImg" src="" alt="Full">
-    <div class="controls">
-      <div>
-        <button id="prev" class="btn">◀ Previous</button>
-        <button id="next" class="btn">Next ▶</button>
-      </div>
-      <div><button id="closeModal" class="btn">Close</button></div>
+    <h2 class="section-title">Personal Posters</h2>
+    <div class="grid">
+      <div class="card"><img src="poster1.jpg"></div>
+      <div class="card"><img src="poster2.jpg"></div>
+      <div class="card"><img src="poster3.jpg"></div>
+      <div class="card"><img src="poster4.jpg"></div>
+      <div class="card"><img src="poster5.jpg"></div>
+      <div class="card"><img src="poster6.jpg"></div>
     </div>
   </div>
-</div>
+</section>
+
+<!-- ADVERTISEMENT -->
+<section id="ads" class="fade-section">
+  <div class="wrap">
+    <h2 class="section-title">Advertisement Posters</h2>
+    <div class="grid">
+      <div class="card"><img src="ad1.jpg"></div>
+      <div class="card"><img src="ad2.jpg"></div>
+      <div class="card"><img src="ad3.jpg"></div>
+      <div class="card"><img src="ad4.jpg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPORTS -->
+<section id="esports" class="fade-section">
+  <div class="wrap">
+    <h2 class="section-title">Esports Visuals</h2>
+    <div class="grid">
+      <div class="card"><img src="es1.jpg"></div>
+      <div class="card"><img src="es2.jpg"></div>
+      <div class="card"><img src="es3.jpg"></div>
+      <div class="card"><img src="es4.jpg"></div>
+      <div class="card"><img src="es5.jpg"></div>
+      <div class="card"><img src="es6.jpg"></div>
+      <div class="card"><img src="es7.jpg"></div>
+      <div class="card"><img src="es8.jpg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section id="type" class="fade-section">
+  <div class="wrap">
+    <h2 class="section-title">Typography — LUMINA</h2>
+    <p class="lead">A custom type exploration built from LED string light inspiration.</p>
+    <div class="grid">
+      <div class="card"><img src="type1.jpg"></div>
+      <div class="card"><img src="type2.jpg"></div>
+      <div class="card"><img src="type3.jpg"></div>
+      <div class="card"><img src="type4.jpg"></div>
+      <div class="card"><img src="type5.jpg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDING -->
+<section id="branding" class="fade-section">
+  <div class="wrap">
+    <h2 class="section-title">Branding Project</h2>
+    <p class="lead">Full branding system — 20 pages, logo, mockups, visual identity & usage rules.</p>
+
+    <div class="grid">
+      <div class="card"><img src="brand-cover.jpg"></div>
+      <div class="card"><img src="brand-logo.jpg"></div>
+      <div class="card"><img src="mockup1.jpg"></div>
+      <div class="card"><img src="mockup2.jpg"></div>
+      <div class="card"><img src="mockup3.jpg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade-section">
+  <div class="wrap">
+    <h2 class="section-title">Let’s Work Together</h2>
+    <p class="lead">Have a project, collaboration, or opportunity?  
+    Reach out anytime — I’d love to create something amazing with you.</p>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <h3>Email</h3>
+        <a href="mailto:lynnlawunn6@gmail.com">lynnlawunn6@gmail.com</a>
+      </div>
+
+      <div class="contact-item">
+        <h3>Instagram</h3>
+        <a href="https://instagram.com/jaykadio_53" target="_blank">@jaykadio_53</a>
+      </div>
+
+      <div class="contact-item">
+        <h3>Viber</h3>
+        <p>+959950641676</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="modal"><img></div>
 
 <script>
-/* ========== Loader ========== */
-const loader = document.getElementById('loader');
-const site = document.getElementById('site');
-window.addEventListener('load', ()=> {
-  // simulate slight loading time for polish; remove timeout if files are big and you want real time
-  setTimeout(()=> {
-    loader.classList.add('hide');
-    site.style.visibility = 'visible';
-    document.body.classList.remove('page-fade');
-    // reveal sections on load
-    revealVisibleSections();
-  }, 700);
+// Fade-in sections on scroll
+const fadeElements = document.querySelectorAll('.fade-section');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  })
 });
+fadeElements.forEach(el=>observer.observe(el));
 
-/* ========== Section reveal on scroll ========== */
-const sections = document.querySelectorAll('section, .hero');
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if (e.isIntersecting) e.target.classList.add('show');
-  });
-},{threshold: 0.18});
-sections.forEach(s=>io.observe(s));
-
-function revealVisibleSections(){ sections.forEach(s=>{
-  const rect = s.getBoundingClientRect();
-  if(rect.top < window.innerHeight * 0.9) s.classList.add('show');
-})}
-
-/* ========== Smooth fade-out navigation ========== */
-document.querySelectorAll('nav a').forEach(link=>{
-  link.addEventListener('click', (ev)=>{
-    ev.preventDefault();
-    const targetId = link.getAttribute('href').replace('#','');
-    // start fade-out
-    document.body.classList.add('page-fade','hide');
-    // after fade, jump to section and fade back in
-    setTimeout(()=>{
-      location.hash = targetId;
-      window.scrollTo({top: document.getElementById(targetId).offsetTop - 20, behavior:'auto'});
-      document.body.classList.remove('hide');
-      // ensure reveal
-      setTimeout(()=>{ revealVisibleSections(); }, 260);
-    }, 420);
-  });
-});
-
-/* ========== Modal viewer with prev/next ========== */
-const thumbs = Array.from(document.querySelectorAll('.thumb'));
+// Modal Image View
 const modal = document.getElementById('modal');
-const modalImg = document.getElementById('modalImg');
-let currentIndex = -1;
-
-function openModal(index){
-  const src = thumbs[index].getAttribute('data-src') || thumbs[index].querySelector('img').src;
-  modalImg.src = src;
-  currentIndex = index;
-  modal.classList.add('show');
-  modal.setAttribute('aria-hidden','false');
-}
-function closeModal(){ modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); currentIndex = -1; }
-
-thumbs.forEach((t,i)=> t.addEventListener('click', ()=> openModal(i)) );
-document.getElementById('closeModal').addEventListener('click', closeModal);
-
-document.getElementById('prev').addEventListener('click', ()=> {
-  if(currentIndex > 0) openModal(currentIndex-1);
+const modalImg = modal.querySelector('img');
+document.querySelectorAll('.card img').forEach(img=>{
+  img.addEventListener('click',()=>{
+    modal.classList.add('active');
+    modalImg.src = img.src;
+  });
 });
-document.getElementById('next').addEventListener('click', ()=> {
-  if(currentIndex < thumbs.length-1) openModal(currentIndex+1);
-});
-modal.addEventListener('click', (e)=> { if(e.target === modal) closeModal(); });
-document.addEventListener('keydown', (e)=> {
-  if(e.key === 'Escape') closeModal();
-  if(e.key === 'ArrowLeft' && currentIndex>0) openModal(currentIndex-1);
-  if(e.key === 'ArrowRight' && currentIndex<thumbs.length-1) openModal(currentIndex+1);
-});
+modal.addEventListener('click',()=>modal.classList.remove('active'));
 
-/* ========== Preload images (lightweight) ========== */
-function preloadList(list){ list.forEach(src=>{ const i=new Image(); i.src=src; }); }
-// create list from data-src attributes and preload
-const srcs = thumbs.map(t => t.getAttribute('data-src') || t.querySelector('img').src);
-preloadList(srcs);
-
+// Page fade-out on nav click
+document.querySelectorAll('nav a').forEach(link=>{
+  link.addEventListener('click',()=>{
+    document.body.classList.add('fade-out');
+    setTimeout(()=>{},400);
+  });
+});
 </script>
+
 </body>
 </html>
