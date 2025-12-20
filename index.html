@@ -672,44 +672,119 @@ section.show{opacity:1;transform:translateY(0)}
 
 
   <!-- ESPORTS -->
-  <section id="esports" class="wrap">
-    <div class="section-title">Night Arena</div>
-    <p class="lead muted">Esports posters and team visuals—high energy, precise composition, and bold identity.</p>
-    <div class="grid" id="esportsGrid">
-      <div class="thumb" data-title="Victory Pulse" data-desc="A hype-driven poster designed to amplify adrenaline and momentum." data-src="/images/esport1.jpg">
-        <img src="/images/esport1.jpg" alt="">
-        <div class="meta"><h4>Victory Pulse</h4><p>Hype & adrenaline.</p></div>
+ <section id="night-arena" class="portfolio-section">
+  <h2 class="section-title">Night Arena</h2>
+
+  <div class="night-arena-grid">
+    <a class="night-card" href="images/Oath%20of%20Paladin.jpg" target="_blank" rel="noopener">
+      <img src="images/Oath%20of%20Paladin.jpg" alt="Oath of Paladin" loading="lazy" decoding="async">
+      <div class="night-card-text">
+        <h3>Oath of Paladin</h3>
+        <p>Poster</p>
       </div>
-      <div class="thumb" data-title="Arena Throne" data-desc="A championship visual expressing dominance and high-stakes competition." data-src="/images/esport2.jpg">
-        <img src="/images/esport2.jpg" alt="">
-        <div class="meta"><h4>Arena Throne</h4><p>Dominance & championship tone.</p></div>
+    </a>
+
+    <a class="night-card" href="images/Page%201.jpg" target="_blank" rel="noopener">
+      <img src="images/Page%201.jpg" alt="Page 1" loading="lazy" decoding="async">
+      <div class="night-card-text">
+        <h3>Page 1</h3>
+        <p>Poster</p>
       </div>
-      <div class="thumb" data-title="Zero Limit Squad" data-desc="Team-focused poster radiating strength, unity, and tactical precision." data-src="/images/esport3.jpg">
-        <img src="/images/esport3.jpg" alt="">
-        <div class="meta"><h4>Zero Limit Squad</h4><p>Strength & unity.</p></div>
+    </a>
+
+    <a class="night-card" href="images/T%20brock%20card.jpg" target="_blank" rel="noopener">
+      <img src="images/T%20brock%20card.jpg" alt="T brock card" loading="lazy" decoding="async">
+      <div class="night-card-text">
+        <h3>T brock card</h3>
+        <p>Card</p>
       </div>
-      <div class="thumb" data-title="Last Round" data-desc="The intensity of esports distilled into one decisive moment." data-src="/images/esport4.jpg">
-        <img src="/images/esport4.jpg" alt="">
-        <div class="meta"><h4>Last Round</h4><p>Decisive moment.</p></div>
+    </a>
+
+    <a class="night-card" href="images/farewell%20shizuu.jpg" target="_blank" rel="noopener">
+      <img src="images/farewell%20shizuu.jpg" alt="Farewell shizuu" loading="lazy" decoding="async">
+      <div class="night-card-text">
+        <h3>Farewell shizuu</h3>
+        <p>Poster</p>
       </div>
-      <div class="thumb" data-title="Storm Protocol" data-desc="A sci-fi-inspired aesthetic built around futuristic combat energy." data-src="/images/esport5.jpg">
-        <img src="/images/esport5.jpg" alt="">
-        <div class="meta"><h4>Storm Protocol</h4><p>Sci-fi combat energy.</p></div>
+    </a>
+
+    <a class="night-card" href="images/paladins%20TDG%202.jpg" target="_blank" rel="noopener">
+      <img src="images/paladins%20TDG%202.jpg" alt="paladins TDG 2" loading="lazy" decoding="async">
+      <div class="night-card-text">
+        <h3>paladins TDG 2</h3>
+        <p>Poster</p>
       </div>
-      <div class="thumb" data-title="Neon Clash" data-desc="A vibrant community poster mixing neon colors and cyber-tech design." data-src="/images/esport6.jpg">
-        <img src="/images/esport6.jpg" alt="">
-        <div class="meta"><h4>Neon Clash</h4><p>Neon & cyber-tech.</p></div>
+    </a>
+
+    <a class="night-card" href="images/paladins%20TDG%20Final.jpg" target="_blank" rel="noopener">
+      <img src="images/paladins%20TDG%20Final.jpg" alt="paladins TDG Final" loading="lazy" decoding="async">
+      <div class="night-card-text">
+        <h3>paladins TDG Final</h3>
+        <p>Poster</p>
       </div>
-      <div class="thumb" data-title="Iron Edge Roster" data-desc="A clean, sharp layout crafted for team lineup announcements." data-src="/images/esport7.jpg">
-        <img src="/images/esport7.jpg" alt="">
-        <div class="meta"><h4>Iron Edge Roster</h4><p>Team lineup clarity.</p></div>
+    </a>
+
+    <a class="night-card" href="images/Invitation%20final.jpg" target="_blank" rel="noopener">
+      <img src="images/Invitation%20final.jpg" alt="Invitation final" loading="lazy" decoding="async">
+      <div class="night-card-text">
+        <h3>Invitation final</h3>
+        <p>Design</p>
       </div>
-      <div class="thumb" data-title="Digital Warfare" data-desc="A tournament identity blending geometry, motion, and strategy." data-src="/images/esport8.jpg">
-        <img src="/images/esport8.jpg" alt="">
-        <div class="meta"><h4>Digital Warfare</h4><p>Geometry, motion, strategy.</p></div>
+    </a>
+
+    <a class="night-card" href="images/Vs%20Ai.jpg" target="_blank" rel="noopener">
+      <img src="images/Vs%20Ai.jpg" alt="Vs Ai" loading="lazy" decoding="async">
+      <div class="night-card-text">
+        <h3>Vs Ai</h3>
+        <p>Poster</p>
       </div>
-    </div>
-  </section>
+    </a>
+  </div>
+</section>
+.night-arena-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:18px;
+  margin-top:18px;
+}
+
+.night-card{
+  display:block;
+  border-radius:18px;
+  overflow:hidden;
+  text-decoration:none;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  transition:transform .2s ease, border-color .2s ease;
+}
+
+.night-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,255,255,0.18);
+}
+
+.night-card img{
+  width:100%;
+  display:block;
+  aspect-ratio:4/5;
+  object-fit:cover;
+}
+
+.night-card-text{
+  padding:12px 14px 14px;
+}
+
+.night-card-text h3{
+  margin:0;
+  font-size:16px;
+  font-weight:600;
+}
+
+.night-card-text p{
+  margin:6px 0 0;
+  font-size:13px;
+  opacity:.75;
+}
 
   <!-- TYPOGRAPHY -->
   <section id="typo" class="wrap">
